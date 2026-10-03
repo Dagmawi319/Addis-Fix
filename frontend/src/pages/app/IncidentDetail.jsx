@@ -69,7 +69,7 @@ export default function IncidentDetail() {
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <div className="space-y-6 lg:col-span-2">
             {inc.representative_image_id && (
-              <img src={fileRawUrl(inc.representative_image_id)} alt="" className="max-h-80 w-full rounded-xl object-cover" />
+              <img src={fileRawUrl(inc.representative_image_id)} alt="" className="h-64 w-full rounded-xl object-cover sm:h-72" />
             )}
             <div>
               <h3 className="mb-2 font-display font-semibold text-white">Description</h3>

@@ -112,7 +112,8 @@ async def follow(incident_id: str, user: dict = Depends(sec.get_current_user)):
 async def unfollow(incident_id: str, user: dict = Depends(sec.get_current_user)):
     res = await db.follows.delete_one({"incident_id": incident_id, "user_id": user["user_id"]})
     if res.deleted_count:
-        await db.incidents.update_one({"incident_id": incident_id}, {"$inc": {"follower_count": -1}})
+        await db.incidents.update_one({"incident_id": incident_id, "follower_count": {"$gt": 0}},
+                                      {"$inc": {"follower_count": -1}})
     return {"following": False}
 
 
