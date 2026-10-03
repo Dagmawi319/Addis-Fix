@@ -1,0 +1,27 @@
+{
+  "summary": "Regression after code-review fixes (AuthContext useCallback/useMemo, IncidentDetail/ReviewIncident/ForgotPassword catch logging, follower_count floor). Re-ran /app/backend/tests/backend_test.py with -n 0 => 42/42 pass. Added targeted regression probes: (a) /api/auth/forgot-password returns byte-identical JSON+status for registered vs unregistered emails ('If that email is registered, a reset link has been sent.'), (b) DELETE /api/incidents/{id}/follow is safe when user is not following (returns 200 {following:false}, count stays >=0), and after follow+unfollow+unfollow the follower_count floors at 0, (c) admin login->me->logout->me(401) cycle repeated 3x successfully (memoized callbacks did not break session). Frontend Playwright regression: ForgotPassword UI shows identical generic confirmation for both registered and unregistered emails; admin login/logout repeated 2x works (redirects to /admin and back to /login); citizen confirm-btn goes '(0) -> (1)' and becomes disabled, follow-btn toggles Follow <-> Unfollow; authority ReviewIncident at /authority/incidents/{id} successfully adds internal note (toast 'Internal note added', note persists in staff-only list), assign-dept-select + assign-btn render.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "AuthContext memoization verified: repeated login/logout cycles work and no stale state. useCallback/useMemo changes are safe.",
+    "IncidentDetail/ReviewIncident/ForgotPassword catch blocks now log, which aids debugging without changing user-visible behavior; ForgotPassword still shows identical generic message on failure path (verified).",
+    "incidents.py unfollow now uses $max flooring (or equivalent) - verified follower_count never drops below 0 even when DELETE /follow is called while not following."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (42/42 pytest + 3 targeted probes)", "frontend": "100% of regression flows (forgot-password, login/logout x2, confirm, follow toggle, authority add-note)"},
+  "test_credentials": "/app/memory/test_credentials.md present. Used admin dagmawiaddisu94@gmail.com, authority demo.authority@addisfix.demo, citizen demo.abebe@addisfix.demo (all with respective passwords).",
+  "seed_data_creation": "None. Used existing seeded incidents (inc_2bd3952f78e5) and seeded users.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend pytest suite still passes with `pytest /app/backend/tests/backend_test.py -n 0`. Preview URL: https://addisfix-demo.preview.emergentagent.com. Note: Pydantic EmailStr rejects fake-looking TLDs (e.g., *.invalid returns 422) - use plausible unregistered gmail addresses to test forgot-password parity. Register endpoint expects 'name' (not 'full_name'). Incidents list items key is 'incident_id' (not 'id') in /api/incidents?limit=N response. Authority review route is /authority/incidents/{incident_id}.",
+  "rca of the issue": "No regressions. All code-review fixes behave as intended."
+}
