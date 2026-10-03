@@ -1,0 +1,179 @@
+{
+  "project_name": "AddisFix",
+  "tagline": "Report · Track · Improve",
+  "hero_headline": "A Cleaner, Safer, Better Addis — Together.",
+  "visual_identity": {
+    "theme_mode": "Dark Dominant App Shell (#0B1220) with high contrast Teal Accent (#19C3C9) and Light Cards for Auth/Marketing",
+    "logo_concept": "Teal map-pin graphic + 'AddisFix' wordmark ('Addis' in White #FFFFFF, 'Fix' in Teal #19C3C9)",
+    "design_archetype": "Civic Precision & Command Center Dark UI (Swiss High Contrast + Tactical Real-Time Map)"
+  },
+  "colors": {
+    "dark_app_shell": {
+      "bg_main": "#0B1220",
+      "bg_card": "#111A2E",
+      "bg_card_hover": "#17233B",
+      "bg_sidebar": "#080E1A",
+      "bg_header": "rgba(11, 18, 32, 0.85)",
+      "border_subtle": "#1E2C4A",
+      "border_focus": "#19C3C9",
+      "text_primary": "#F1F5F9",
+      "text_secondary": "#94A3B8",
+      "text_muted": "#64748B"
+    },
+    "light_auth_marketing": {
+      "bg_card": "#FFFFFF",
+      "bg_page": "#F8FAFC",
+      "border": "#E2E8F0",
+      "text_primary": "#0F172A",
+      "text_secondary": "#475569"
+    },
+    "primary_accent": {
+      "teal_main": "#19C3C9",
+      "teal_hover": "#16B9C4",
+      "teal_light": "rgba(25, 195, 201, 0.12)",
+      "teal_border": "rgba(25, 195, 201, 0.3)"
+    },
+    "status_badges": {
+      "reported": {
+        "bg": "#1E293B",
+        "text": "#94A3B8",
+        "border": "#334155",
+        "dot": "#94A3B8"
+      },
+      "verified": {
+        "bg": "rgba(59, 130, 246, 0.15)",
+        "text": "#60A5FA",
+        "border": "rgba(59, 130, 246, 0.3)",
+        "dot": "#3B82F6"
+      },
+      "assigned": {
+        "bg": "rgba(168, 85, 247, 0.15)",
+        "text": "#C084FC",
+        "border": "rgba(168, 85, 247, 0.3)",
+        "dot": "#A855F7"
+      },
+      "in_progress": {
+        "bg": "rgba(245, 158, 11, 0.15)",
+        "text": "#FBBF24",
+        "border": "rgba(245, 158, 11, 0.3)",
+        "dot": "#F59E0B"
+      },
+      "resolved": {
+        "bg": "rgba(34, 197, 94, 0.15)",
+        "text": "#4ADE80",
+        "border": "rgba(34, 197, 94, 0.3)",
+        "dot": "#22C55E"
+      }
+    },
+    "severity_levels": {
+      "high": {
+        "bg": "rgba(239, 68, 68, 0.15)",
+        "text": "#F87171",
+        "border": "rgba(239, 68, 68, 0.3)",
+        "icon_color": "#EF4444"
+      },
+      "medium": {
+        "bg": "rgba(245, 158, 11, 0.15)",
+        "text": "#FBBF24",
+        "border": "rgba(245, 158, 11, 0.3)",
+        "icon_color": "#F59E0B"
+      },
+      "low": {
+        "bg": "rgba(59, 130, 246, 0.15)",
+        "text": "#60A5FA",
+        "border": "rgba(59, 130, 246, 0.3)",
+        "icon_color": "#3B82F6"
+      }
+    },
+    "categories": {
+      "roads": "#EF4444",
+      "waste": "#10B981",
+      "water": "#06B6D4",
+      "electricity": "#F59E0B",
+      "streetlights": "#8B5CF6",
+      "drainage": "#3B82F6",
+      "public_property": "#EC4899",
+      "other": "#64748B"
+    },
+    "css_variables_code": ":root {\n  --bg-dark-app: #0B1220;\n  --bg-dark-card: #111A2E;\n  --bg-dark-sidebar: #080E1A;\n  --teal-accent: #19C3C9;\n  --teal-accent-hover: #16B9C4;\n  --teal-glow: rgba(25, 195, 201, 0.25);\n  --border-dark: #1E2C4A;\n  --text-dark-primary: #F1F5F9;\n  --text-dark-secondary: #94A3B8;\n}"
+  },
+  "typography": {
+    "fonts": {
+      "display_headings": "'Plus Jakarta Sans', -apple-system, sans-serif",
+      "body_text": "'DM Sans', -apple-system, sans-serif",
+      "mono_data": "'JetBrains Mono', monospace"
+    },
+    "hierarchy": {
+      "hero_title": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight",
+      "section_title": "text-2xl sm:text-3xl font-bold tracking-tight",
+      "card_title": "text-lg sm:text-xl font-semibold",
+      "body": "text-base font-normal leading-relaxed",
+      "subtext": "text-sm text-slate-400 font-normal",
+      "mono_coordinates": "font-mono text-xs tracking-wider"
+    }
+  },
+  "layout_and_grids": {
+    "app_shell": "3-column layout (Left Sidebar 260px + Central Dynamic View/Map + Right Incident Rail 360px)",
+    "auth_screen": "Split Layout: Left Dark Panel with Logo & Line-art Skyline Illustration (50%) + Right Light Card with Welcome back form (50%)",
+    "report_stepper": "4-Step Vertical/Horizontal Stepper (1. Photo → 2. Location → 3. Details → 4. Review)",
+    "admin_dashboard": "Header Stats Grid (4 Bento Cards) + Priority Incidents Table + Department Workflows",
+    "bento_grid_marketing": "Hero full-bleed city dusk photo + 4 Feature Cards (Report, We Analyze, Community, Get It Fixed)"
+  },
+  "components": {
+    "buttons": {
+      "primary_solid": "bg-[#19C3C9] hover:bg-[#16B9C4] text-[#0B1220] font-bold px-6 py-3 rounded-lg shadow-lg shadow-[#19C3C9]/20 transition-all duration-200 active:scale-[0.98]",
+      "secondary_outline": "border border-[#19C3C9] text-[#19C3C9] hover:bg-[#19C3C9]/10 font-semibold px-6 py-3 rounded-lg transition-all duration-200",
+      "ghost_dark": "text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg transition-all"
+    },
+    "cards": {
+      "dark_incident_card": "bg-[#111A2E] border border-[#1E2C4A] hover:border-[#19C3C9]/50 rounded-xl p-4 shadow-md transition-all duration-200",
+      "ai_detection_card": "bg-[#17233B]/80 border border-[#19C3C9]/40 rounded-xl p-4 space-y-3 relative overflow-hidden backdrop-blur-md",
+      "light_auth_card": "bg-white border border-slate-200 shadow-xl rounded-2xl p-8 text-slate-900"
+    },
+    "timeline": "Vertical Status Timeline with custom active step pulse node, connector lines in slate-700, teal active node, and timestamp tags",
+    "map_pins": "Custom animated Leaflet/Mapbox SVG pins with category background colors and ripple sonar ping effect on hover/selection",
+    "stepper": "Step numbers inside circular badges with active teal border, step titles, and step connectors"
+  },
+  "image_urls": [
+    {
+      "category": "hero_background",
+      "url": "https://images.unsplash.com/photo-1668003314070-9ef38c3cafb8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwyfHxBZGRpcyUyMEFiYWJhJTIwY2l0eSUyMHNreWxpbmUlMjBzdW5zZXQlMjBkdXNrfGVufDB8fHx8MTc5MTAzNTUzM3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Addis Ababa city skyline at dusk for main hero section background with overlay"
+    },
+    {
+      "category": "road_incident_pothole",
+      "url": "https://images.pexels.com/photos/6018646/pexels-photo-6018646.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Road pothole repair incident sample image"
+    },
+    {
+      "category": "street_construction",
+      "url": "https://images.pexels.com/photos/30667997/pexels-photo-30667997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Street infrastructure maintenance incident photo"
+    },
+    {
+      "category": "map_view_preview",
+      "url": "https://images.unsplash.com/photo-1584972191378-d70853fc47fc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwxfHxjaXR5JTIwbWFwJTIwbG9jYXRpb24lMjBwaW4lMjBuYXZpZ2F0aW9ufGVufDB8fHx8MTc5MTAzNTUzM3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Stylized dark city map background"
+    },
+    {
+      "category": "community_avatars",
+      "url": "https://images.unsplash.com/photo-1572793792870-22f51f2f7e75?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHw0fHxldGhpb3BpYSUyMGFkZGlzJTIwYWJhYmElMjBzdHJlZXQlMjBwZW9wbGV8ZW58MHx8fHwxNzkxMDM1NTM3fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Community verifiers avatar photo sample"
+    }
+  ],
+  "motion_and_interactions": {
+    "hover_effects": "Cards lift -translate-y-1 with subtle teal shadow ring glow shadow-[0_4px_20px_rgba(25,195,201,0.15)]",
+    "map_pin_select": "Scale 1.25 animation with smooth drop shadow expansion",
+    "modal_transitions": "Fade-in with scale 0.95 to 1.0 ease-out",
+    "toast_notifications": "Use Sonner with custom dark background #111A2E and teal left accent border"
+  },
+  "instructions_to_main_agent": [
+    "Build strictly using .js files in src/ (React JavaScript syntax). Do not use TypeScript .tsx extensions.",
+    "Implement the dark app shell UI (#0B1220) for App views (Map, My Reports, Incident Details, Admin Dashboard, Stepper Report Flow).",
+    "Implement light background cards (#FFFFFF) for Auth Sign In / Sign Up split screen.",
+    "All interactive elements (buttons, inputs, select, tabs, links, status badges) MUST have data-testid attributes (e.g. data-testid='report-problem-btn').",
+    "Do NOT use transparent backgrounds on dropdowns, modals, floating top bars, or headers without a backdrop blur blur-md or solid bg.",
+    "Use Lucide-React icons for category icons and navigation items.",
+    "Ensure status badge colors strictly follow the provided status_badges color dictionary."
+  ]
+}

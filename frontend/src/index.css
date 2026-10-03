@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-app: #0B1220;
+  --bg-card: #111A2E;
+  --bg-card-hover: #17233B;
+  --bg-sidebar: #080E1A;
+  --border-dark: #1E2C4A;
+  --teal: #19C3C9;
+  --teal-hover: #16B9C4;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 184 77% 44%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 184 77% 44%;
+  --radius: 0.75rem;
+}
+
+* { border-color: hsl(var(--border)); }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, .font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Dark app shell scope */
+.app-dark {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.card-dark {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 0.75rem;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.card-dark:hover { border-color: rgba(25,195,201,.45); }
+.card-hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(25,195,201,.12); }
+
+.btn-teal {
+  background-color: var(--teal);
+  color: #04131a;
+  font-weight: 700;
+  transition: all .18s ease;
+}
+.btn-teal:hover { background-color: var(--teal-hover); box-shadow: 0 6px 20px rgba(25,195,201,.3); }
+.btn-teal:active { transform: scale(.98); }
+
+::selection { background: rgba(25,195,201,.3); color: #fff; }
+
+/* Scrollbars in dark areas */
+.app-dark ::-webkit-scrollbar { width: 8px; height: 8px; }
+.app-dark ::-webkit-scrollbar-track { background: transparent; }
+.app-dark ::-webkit-scrollbar-thumb { background: #1E2C4A; border-radius: 8px; }
+.app-dark ::-webkit-scrollbar-thumb:hover { background: #2a3d63; }
+
+/* Leaflet dark tweaks */
+.leaflet-container { background: #0B1220; font-family: 'DM Sans', sans-serif; }
+/* Darken free OSM tiles to fit the dark app shell (tiles only, not markers/controls) */
+.leaflet-tile { filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.95) saturate(0.85); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #111A2E; color: #F1F5F9; border: 1px solid #1E2C4A; }
+.leaflet-popup-content { margin: 12px 14px; }
+.leaflet-bar a { background: #111A2E; color: #F1F5F9; border-color: #1E2C4A; }
+.leaflet-bar a:hover { background: #17233B; }
+.addis-pin { display:flex; align-items:center; justify-content:center; }
+.addis-pin .pin-dot {
+  width: 20px; height: 20px; border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg); border: 2px solid rgba(255,255,255,.85);
+  box-shadow: 0 2px 6px rgba(0,0,0,.4);
+}
+.marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+  background: rgba(25,195,201,.25);
+}
+.marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
+  background: #19C3C9; color: #04131a; font-weight: 700; font-family: 'Plus Jakarta Sans';
+}
+
+@keyframes fadeInUp { from { opacity:0; transform: translateY(12px);} to {opacity:1; transform:none;} }
+.animate-fade-up { animation: fadeInUp .5s ease both; }
+
+@layer base {
+  [data-debug-wrapper="true"] { display: contents !important; }
+}
