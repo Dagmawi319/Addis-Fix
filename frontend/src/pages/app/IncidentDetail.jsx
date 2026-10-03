@@ -31,7 +31,7 @@ export default function IncidentDetail() {
   const confirm = async () => {
     if (!user) return navigate("/login");
     setBusy(true);
-    try { const { data } = await api.post(`/incidents/${id}/confirm`); setInc({ ...inc, confirmation_count: data.confirmation_count, confirmed_by_me: true }); toast.success("Thanks for confirming!"); } catch {}
+    try { const { data } = await api.post(`/incidents/${id}/confirm`); setInc({ ...inc, confirmation_count: data.confirmation_count, confirmed_by_me: true }); toast.success("Thanks for confirming!"); } catch (e) { console.error("Confirm failed:", e); toast.error("Could not confirm right now. Please try again."); }
     setBusy(false);
   };
   const toggleFollow = async () => {
@@ -40,7 +40,7 @@ export default function IncidentDetail() {
     try {
       if (inc.following) { await api.delete(`/incidents/${id}/follow`); setInc({ ...inc, following: false, follower_count: Math.max(0, inc.follower_count - 1) }); }
       else { await api.post(`/incidents/${id}/follow`); setInc({ ...inc, following: true, follower_count: inc.follower_count + 1 }); toast.success("You're now following this incident."); }
-    } catch {}
+    } catch (e) { console.error("Follow toggle failed:", e); toast.error("Could not update follow state. Please try again."); }
     setBusy(false);
   };
 

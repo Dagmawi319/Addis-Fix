@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
 import api, { formatApiError } from "@/lib/api";
 
 const AuthContext = createContext(null);
@@ -11,9 +11,7 @@ export function AuthProvider({ children }) {
     try {
       const { data } = await api.get("/auth/me");
       setUser(data);
-    } catch {
-      setUser(null);
-    }
+    } catch { setUser(null); }
   }, []);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ export function AuthProvider({ children }) {
     checkAuth();
   }, [checkAuth]);
 
-  const login = async (email, password) => {
+  const login = useCallback(async (email, password) => {
     try {
       const { data } = await api.post("/auth/login", { email, password });
       setUser(data);
@@ -32,9 +30,9 @@ export function AuthProvider({ children }) {
     } catch (e) {
       return { ok: false, error: formatApiError(e.response?.data?.detail) };
     }
-  };
+  }, []);
 
-  const register = async (name, email, password) => {
+  const register = useCallback(async (name, email, password) => {
     try {
       const { data } = await api.post("/auth/register", { name, email, password });
       setUser(data);
@@ -42,15 +40,20 @@ export function AuthProvider({ children }) {
     } catch (e) {
       return { ok: false, error: formatApiError(e.response?.data?.detail) };
     }
-  };
+  }, []);
 
-  const logout = async () => {
-    try { await api.post("/auth/logout"); } catch {}
+  const logout = useCallback(async () => {
+    try { await api.post("/auth/logout"); } catch (e) { console.error("Logout request failed:", e); }
     setUser(null);
-  };
+  }, []);
+
+  const value = useMemo(
+    () => ({ user, setUser, login, register, logout, checkAuth }),
+    [user, login, register, logout, checkAuth]
+  );
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, register, logout, checkAuth }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

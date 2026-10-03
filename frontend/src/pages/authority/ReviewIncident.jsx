@@ -40,7 +40,7 @@ export default function ReviewIncident() {
   const addNote = async () => {
     if (!note.trim()) return;
     setBusy(true);
-    try { await api.post(`/incidents/${id}/notes`, { note }); setNote(""); toast.success("Internal note added"); load(); } catch {}
+    try { await api.post(`/incidents/${id}/notes`, { note }); setNote(""); toast.success("Internal note added"); load(); } catch (e) { console.error("Add note failed:", e); toast.error("Could not add the note. Please try again."); }
     setBusy(false);
   };
 

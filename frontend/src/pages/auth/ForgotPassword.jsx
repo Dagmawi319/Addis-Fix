@@ -11,7 +11,8 @@ export default function ForgotPassword() {
   const submit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    try { await api.post("/auth/forgot-password", { email }); } catch {}
+    // Always show the same confirmation regardless of outcome (prevents account enumeration).
+    try { await api.post("/auth/forgot-password", { email }); } catch (e) { console.error("Forgot-password request error:", e); }
     setLoading(false);
     setSent(true);
   };
